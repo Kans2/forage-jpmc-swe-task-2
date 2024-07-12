@@ -43,7 +43,7 @@ class App extends Component<{}, IState> {
    */
   getDataFromServer() {
     let x = 0;
-    const intervel = setIntervel(()=>{
+    const intervel = setInterval(()=>{
       DataStreamer.getData((serverResponds: ServerRespond[]) => {
         // Update the state by creating a new array of data that consists of
         // Previous data in the state and the new data from server
@@ -54,9 +54,8 @@ class App extends Component<{}, IState> {
       });
       x++;
       if(x>1000){
-        clearIntervel(intervel)
-      },
-
+        clearInterval(intervel)
+      }
     },100)
  
   }
